@@ -49,7 +49,6 @@ class SecondFragment : Fragment() {
 
 
 
-
     private fun createAccount() {
         Toast.makeText(activity,"註冊中..", Toast.LENGTH_SHORT).show()
         // [START create_user_with_email]

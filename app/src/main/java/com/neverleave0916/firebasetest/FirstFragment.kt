@@ -1,6 +1,7 @@
 package com.neverleave0916.firebasetest
 
 import android.app.Activity
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_first.*
@@ -35,6 +37,7 @@ class FirstFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         button.setOnClickListener { getUserProfile() }
         button3.setOnClickListener { onClick() }
+        button4.setOnClickListener { updateProfile() }
     }
 
 
@@ -85,5 +88,23 @@ class FirstFragment : Fragment() {
             val uid = user.uid
         }
         // [END get_user_profile]
+    }
+
+    private fun updateProfile() {
+        // [START update_profile]
+        val user = FirebaseAuth.getInstance().currentUser
+
+        val profileUpdates = UserProfileChangeRequest.Builder()
+            .setDisplayName("Jane Q. User")
+            .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
+            .build()
+
+        user?.updateProfile(profileUpdates)
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(activity,"User profile updated.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        // [END update_profile]
     }
 }
