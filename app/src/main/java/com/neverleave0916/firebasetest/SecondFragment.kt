@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_first.et1
 import kotlinx.android.synthetic.main.fragment_first.et2
 import kotlinx.android.synthetic.main.fragment_second.*
@@ -20,6 +22,13 @@ import kotlinx.android.synthetic.main.fragment_second.*
  */
 class SecondFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
+    var db = Firebase.firestore
+    class member(
+        var account: String = "",
+        var pass: String = "",
+        var names : String = "")
+    val res = member()
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -46,11 +55,18 @@ class SecondFragment : Fragment() {
         // [START create_user_with_email]
         var email=et1.text.toString()
         var password =et2.text.toString()
+
+        res.account=et1.text.toString()
+        res.pass=et2.text.toString()
+        res.names=et3.text.toString()
+
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener((context as Activity?)!!) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(activity,"註冊成功", Toast.LENGTH_SHORT).show()
+                    db.collection("member").add(res)
+                    findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
                     val user = auth.currentUser
                 } else {
                     // If sign in fails, display a message to the user.

@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_first.*
 
 /**
@@ -17,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_first.*
  */
 class FirstFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -50,7 +53,9 @@ class FirstFragment : Fragment() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(activity,"登入成功", Toast.LENGTH_SHORT).show()
+
                     val user = auth.currentUser
+                    findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
 
                 } else {
                     // If sign in fails, display a message to the user.
