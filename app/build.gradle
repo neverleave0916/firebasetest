@@ -15,7 +15,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true//盧俊吉
     }
 
     buildTypes {
@@ -50,11 +49,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
     //implementation 'com.google.firebase:firebase-auth:16.0.5'
     implementation 'com.google.firebase:firebase-auth:19.1.0'
-    implementation 'com.google.firebase:firebase-firestore-ktx:21.4.1'//james
-    implementation 'com.android.support:multidex:1.0.3'//james
 
 
-    implementation 'com.google.firebase:firebase-firestore:17.1.0'//james
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

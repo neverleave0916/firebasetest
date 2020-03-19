@@ -1,7 +1,6 @@
 package com.neverleave0916.firebasetest
 
 import android.app.Activity
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_first.*
 
 /**
@@ -37,7 +34,6 @@ class FirstFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         button.setOnClickListener { getUserProfile() }
         button3.setOnClickListener { onClick() }
-        button4.setOnClickListener { updateProfile() }
     }
 
 

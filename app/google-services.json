@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "4675884496-0kgm2igfru284ktl7jg5csgnqmdpj02d.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.neverleave0916.firebasetest",
-            "certificate_hash": "abd1d51bb3c98ffd6509f860ce2ac3f816dad2d5"
-          }
-        },
-        {
           "client_id": "4675884496-qj3hlqsgn150q68k8rp4q7aktg38u27n.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
